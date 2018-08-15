@@ -72,5 +72,6 @@ class Board < ApplicationRecord
         end
       end
     end
+    return neighbors
   end
 end
