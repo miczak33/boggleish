@@ -1,8 +1,8 @@
 require 'set'
 
 class Board < ApplicationRecord
-  ROWS=4
-  COLS=4
+  ROWS=ENV['BOGGLE_ROWS']
+  COLS=ENV['BOGGLE_COLUMNS']
   serialize :arrangement
 
   def generate_board
