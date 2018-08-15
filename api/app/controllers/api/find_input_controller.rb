@@ -5,7 +5,7 @@
     # GET /boards
     def index
       @board = Board.find(params[:board_id])
-      render json: @board.find_in_board(params[:input_text])
+      render json: { found: @board.find_in_board(params[:input_text]) }
     end
 
     # # GET /boards/1
