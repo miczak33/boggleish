@@ -38,3 +38,7 @@ body {
       vertical-align: middle;
       font-size:50px;
 }
+
+.relative {
+    position: relative;
+}
