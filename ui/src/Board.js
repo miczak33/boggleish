@@ -9,7 +9,8 @@ export default class Board extends Component {
   state = {
     board: {},
     wordInput: '',
-    wordFound: null
+    wordFound: null,
+    isActualWord: false
   };
 
   componentDidMount() {
@@ -22,7 +23,7 @@ export default class Board extends Component {
   findWord = e => {
     e.preventDefault();
     axios.get(`http://localhost:3000/api/boards/${this.props.match.params.boardId}/find_input?input_text=${this.state.wordInput}`)
-      .then(result => this.setState({ wordFound: result.data.found }));
+      .then(result => this.setState({ wordFound: result.data.found, isActualWord: result.data.isWord }));
   }
 
   handleInput = e => {
@@ -66,15 +67,20 @@ export default class Board extends Component {
           </div>
         </div>
         <div style={{ width: '500px', margin: '0 auto' }}>
-          {this.state.wordFound === true &&
+          {(this.state.wordFound === true && this.state.isActualWord) &&
             <Alert bsStyle="success">
               The word <strong>{this.state.wordInput}</strong> was found on the board.
-          </Alert>
+            </Alert>
           }
           {this.state.wordFound === false &&
             <Alert bsStyle="danger">
               <strong>Word Not Found.</strong> The word <strong>{this.state.wordInput}</strong> was not found on the board.
-          </Alert>
+            </Alert>
+          }
+          {(this.state.wordFound === true && !this.state.isActualWord) &&
+            <Alert bsStyle="danger">
+              <strong>Not a Real Word.</strong> The word <strong>{this.state.wordInput}</strong> was found on the board but was not an actual word.
+            </Alert>
           }
         </div>
         
