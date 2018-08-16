@@ -1,3 +1,5 @@
+require 'net/http'
+require 'openssl'
 
   class Api::FindInputController < ApplicationController
     before_action :set_board, only: [:show, :update, :destroy]
@@ -5,7 +7,24 @@
     # GET /boards
     def index
       @board = Board.find(params[:board_id])
-      render json: { found: @board.find_in_board(params[:input_text]) }
+      found = @board.find_in_board(params[:input_text])
+      isWord = false
+      if found
+        url = URI.parse("https://od-api.oxforddictionaries.com/api/v1/entries/en/#{params[:input_text]}/regions=us")
+        puts url.host
+        puts url.port
+        https = Net::HTTP.new(url.host, url.port)
+        https.use_ssl = true
+        req = Net::HTTP::Get.new(url.request_uri)
+        req['app_key'] = ENV['OXFORD_APP_KEY']
+        req['app_id'] = ENV['OXFORD_APP_ID']
+        res = https.request(req)
+        puts res
+        if res.code == '200'
+          isWord = true
+        end
+      end
+      render json: { found: found, isWord: isWord }
     end
 
     # # GET /boards/1
