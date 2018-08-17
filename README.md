@@ -11,6 +11,23 @@ OR
 * Rails
 * Npm
 
+## How to Run (Docker)
+Check this repo out and navigate to its root.
+
+1) Open a terminal session and build the docker images:
+
+  ```
+	docker-compose build
+  ```
+
+2) Now create the apps from the images
+
+  ```
+	docker-compose up
+  ```
+
+3) Go to http://localhost:8080
+
 ## How to Run (local)
 Check this repo out and navigate to its root.
 
@@ -37,22 +54,5 @@ Check this repo out and navigate to its root.
   ```
 	npm run start
   ```
-
-## How to Run (Docker)
-Check this repo out and navigate to its root.
-
-1) Open a terminal session and build the docker images:
-
-  ```
-	docker-compose build
-  ```
-
-2) Now create the apps from the images
-
-  ```
-	docker-compose up
-  ```
-
-3) Go to http://localhost:8080
 	
 
