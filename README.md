@@ -1,4 +1,4 @@
-#Boggleish
+# Boggleish
 A simplified boggle-like game
 
 ## Requirements to Run
