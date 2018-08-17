@@ -13,5 +13,7 @@ RUN bundle install
 
 ADD . $APP_HOME
 
+RUN rake db:create && rake db:migrate
+
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
