@@ -24,7 +24,7 @@ Check this repo out and navigate to its root.
 
   ```
 	rails s
-	```
+  ```
 
 3) Open a new terminal, then go to the ui folder and npm install.
 
