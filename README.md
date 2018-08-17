@@ -11,7 +11,7 @@ OR
 * Rails
 * Npm
 
-##How to Run (local)
+## How to Run (local)
 Check this repo out and navigate to its root.
 
 1) Go to the api folder and install gems/rake db
@@ -38,7 +38,7 @@ Check this repo out and navigate to its root.
 	npm run start
   ```
 
-##How to Run (Docker)
+## How to Run (Docker)
 Check this repo out and navigate to its root.
 
 1) Open a terminal session and build the docker images:
