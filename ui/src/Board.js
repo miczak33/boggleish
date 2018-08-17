@@ -14,7 +14,7 @@ export default class Board extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/boards/${this.props.match.params.boardId}`)
+    axios.get(`${process.env.REACT_APP_API_ENDPOINT}/api/boards/${this.props.match.params.boardId}`)
       .then(board => this.setState((prevState, props) => {
         return { board: board.data }
       }));
@@ -22,7 +22,7 @@ export default class Board extends Component {
 
   findWord = e => {
     e.preventDefault();
-    axios.get(`http://localhost:3000/api/boards/${this.props.match.params.boardId}/find_input?input_text=${this.state.wordInput}`)
+    axios.get(`${process.env.REACT_APP_API_ENDPOINT}/api/boards/${this.props.match.params.boardId}/find_input?input_text=${this.state.wordInput}`)
       .then(result => this.setState({ wordFound: result.data.found, isActualWord: result.data.isWord }));
   }
 
